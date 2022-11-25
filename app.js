@@ -1,5 +1,6 @@
-let input = 3;
+let input = 5;
 let requiredResult = [];
+let counter = 1;
 
 let mainContainer = document.querySelector('.main-container');
 
@@ -38,49 +39,57 @@ function placeNumbers() {
     // console.log(i,j);
 
     requiredResult[i][j] = number;
-
+    // let numText = mainContainer.children[i].children[j].innerText;
     mainContainer.children[i].children[j].innerText = number;
     // rows[i][j].innerText = number;
     number++;
 
     //inserts the numbers into the cube according to the given size
     for (let k = 0; k < input ** 2 - 1; k++) {
+        setTimeout(() => {
+            let prevRow = i;
+            let prevCol = j;
 
-        let prevRow = i;
-        let prevCol = j;
+            console.log({ i, j })
 
-        if (i === 0) {
-            i += (input - 1);
-        } else {
-            i -= 1;
-        }
+            if (i === 0) {
+                i += (input - 1);
+            } else {
+                i -= 1;
+            }
 
 
-        if (j === input - 1) {
-            j -= (input - 1);
-        } else {
-            j += 1;
-        }
-        // console.log(i,j);
+            if (j === input - 1) {
+                j -= (input - 1);
+            } else {
+                j += 1;
+            }
+            // console.log(i,j);
 
+
+            if (typeof requiredResult[i][j] === 'undefined') {
+                requiredResult[i][j] = number;
+                mainContainer.children[i].children[j].innerText = number;
+                number++;
+            } else {
+
+                i = prevRow;
+                j = prevCol;
+                i++;
+                requiredResult[i][j] = number;
+                mainContainer.children[i].children[j].innerText = number;
+                number++;
+            }
+        }, counter * 1000)
+        counter += 1;
 
         //checks if there is a number present at the location or not
-        if (typeof requiredResult[i][j] === 'undefined') {
-            requiredResult[i][j] = number;
-            mainContainer.children[i].children[j].innerText = number;
-            number++;
-        } else {
-            i = prevRow;
-            j = prevCol;
-            i++;
-            requiredResult[i][j] = number;
-            mainContainer.children[i].children[j].innerText = number;
-            number++;
-        }
+
 
         // console.log(i,j);
 
     }
+
 }
 
 console.table(requiredResult);
