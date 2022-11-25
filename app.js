@@ -1,4 +1,4 @@
-let input = 5;
+let input = 3;
 let requiredResult = [];
 let counter = 1;
 
@@ -39,9 +39,8 @@ function placeNumbers() {
     // console.log(i,j);
 
     requiredResult[i][j] = number;
-    // let numText = mainContainer.children[i].children[j].innerText;
     mainContainer.children[i].children[j].innerText = number;
-    // rows[i][j].innerText = number;
+    
     number++;
 
     //inserts the numbers into the cube according to the given size
@@ -50,7 +49,6 @@ function placeNumbers() {
             let prevRow = i;
             let prevCol = j;
 
-            console.log({ i, j })
 
             if (i === 0) {
                 i += (input - 1);
