@@ -94,7 +94,7 @@ if (input % 2 !== 0) {
     }
 } else {
     alert("please enter an odd number (3 or 5 or 9)");
-    location.href = 'http://127.0.0.1:5500/index.html';
+    location.href = window.location.href;
     // input = prompt("Enter the size of cube: ");
 }
 
