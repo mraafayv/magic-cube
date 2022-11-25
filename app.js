@@ -93,7 +93,7 @@ if (input % 2 !== 0) {
 
     }
 } else {
-    alert("please enter an odd number (3 or 5 or 9)");
+    alert("Please Enter an Odd Number (3 or 5 or 9 etc)");
     location.href = window.location.href;
     // input = prompt("Enter the size of cube: ");
 }
